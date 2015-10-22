@@ -1,0 +1,11 @@
+{
+    "name": "chongyi/swoole-ide-helper",
+    "description": "Swoole IDE helper",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "chongyi",
+            "email": "xpz3847878@163.com"
+        }
+    ]
+}
