@@ -137,24 +137,53 @@ namespace {
          * @var int
          */
         public $master_pid;
+
         /**
          * 管理进程PID
          *
          * @var int
          */
         public $manager_pid;
+
         /**
          * 当前Worker的进程ID，与posix_getpid()结果一致
          *
          * @var int
          */
         public $worker_pid;
+
         /**
          * 当前Worker进程的ID，0 - ($serv->setting[worker_num]-1)
          *
          * @var int
          */
         public $worker_id;
+
+        /**
+         * 是否 Task 工作进程
+         *
+         *  true  表示当前的进程是Task工作进程
+         *  false 表示当前的进程是Worker进程
+         *
+         * @var bool
+         */
+        public $taskworker;
+
+        /**
+         * TCP连接迭代器，可以使用foreach遍历服务器当前所有的连接，此属性的功能与swoole_server->connnection_list是一致的，但是更加友好。遍历的元素为单个连接的fd
+         *
+         * 连接迭代器依赖pcre库，未安装pcre库无法使用此功能
+         *
+         *      foreach($server->connections as $fd)
+         *      {
+         *          $server->send($fd, "hello");
+         *      }
+         *
+         *      echo "当前服务器共有 ".count($server->connections). " 个连接\n";
+         *
+         * @var array
+         */
+        public $connections;
 
 
         /**
@@ -477,5 +506,10 @@ namespace {
         public function heartbeat($if_close_connection = true)
         {
         }
+    }
+
+    class swoole_http_server extends swoole_server
+    {
+
     }
 }
