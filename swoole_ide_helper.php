@@ -2,7 +2,7 @@
 /**
  * Swoole IDE helper
  *
- * Í¨¹ı¸Ã¸¨ÖúÎÄ¼şÊµÏÖ Swoole µÄÏà¹ØÀà¡¢º¯ÊıµÈÔÚ IDE »·¾³ÏÂµÄ×Ô¶¯²¹È«¡£
+ * é€šè¿‡è¯¥è¾…åŠ©æ–‡ä»¶å®ç° Swoole çš„ç›¸å…³ç±»ã€å‡½æ•°ç­‰åœ¨ IDE ç¯å¢ƒä¸‹çš„è‡ªåŠ¨è¡¥å…¨ã€‚
  *
  * @author Chongyi <xpz3847878@163.com>
  * @see    https://github.com/chongyi/swoole-ide-helper
@@ -10,41 +10,41 @@
 
 namespace {
 
-    exit; // ¸ÃÎÄ¼şÑÏ½û±»ÔØÈë£¬½ö¹© IDE Ê¶±ğÊ¹ÓÃ
+    exit; // è¯¥æ–‡ä»¶ä¸¥ç¦è¢«è½½å…¥ï¼Œä»…ä¾› IDE è¯†åˆ«ä½¿ç”¨
 
-    define('SWOOLE_BASE', 1); //Ê¹ÓÃBaseÄ£Ê½£¬ÒµÎñ´úÂëÔÚReactorÖĞÖ±½ÓÖ´ĞĞ
-    define('SWOOLE_THREAD', 2); //Ê¹ÓÃÏß³ÌÄ£Ê½£¬ÒµÎñ´úÂëÔÚWorkerÏß³ÌÖĞÖ´ĞĞ
-    define('SWOOLE_PROCESS', 3); //Ê¹ÓÃ½ø³ÌÄ£Ê½£¬ÒµÎñ´úÂëÔÚWorker½ø³ÌÖĞÖ´ĞĞ
+    define('SWOOLE_BASE', 1); //ä½¿ç”¨Baseæ¨¡å¼ï¼Œä¸šåŠ¡ä»£ç åœ¨Reactorä¸­ç›´æ¥æ‰§è¡Œ
+    define('SWOOLE_THREAD', 2); //ä½¿ç”¨çº¿ç¨‹æ¨¡å¼ï¼Œä¸šåŠ¡ä»£ç åœ¨Workerçº¿ç¨‹ä¸­æ‰§è¡Œ
+    define('SWOOLE_PROCESS', 3); //ä½¿ç”¨è¿›ç¨‹æ¨¡å¼ï¼Œä¸šåŠ¡ä»£ç åœ¨Workerè¿›ç¨‹ä¸­æ‰§è¡Œ
     define('SWOOLE_PACKET', 0x10);
 
-    define('SWOOLE_SOCK_TCP', 1); //´´½¨tcp socket
-    define('SWOOLE_SOCK_TCP6', 3); //´´½¨tcp ipv6 socket
-    define('SWOOLE_SOCK_UDP', 2); //´´½¨udp socket
-    define('SWOOLE_SOCK_UDP6', 4); //´´½¨udp ipv6 socket
-    define('SWOOLE_SOCK_UNIX_DGRAM', 5); //´´½¨udp socket
-    define('SWOOLE_SOCK_UNIX_STREAM', 6); //´´½¨udp ipv6 socket
+    define('SWOOLE_SOCK_TCP', 1); //åˆ›å»ºtcp socket
+    define('SWOOLE_SOCK_TCP6', 3); //åˆ›å»ºtcp ipv6 socket
+    define('SWOOLE_SOCK_UDP', 2); //åˆ›å»ºudp socket
+    define('SWOOLE_SOCK_UDP6', 4); //åˆ›å»ºudp ipv6 socket
+    define('SWOOLE_SOCK_UNIX_DGRAM', 5); //åˆ›å»ºudp socket
+    define('SWOOLE_SOCK_UNIX_STREAM', 6); //åˆ›å»ºudp ipv6 socket
     define('SWOOLE_SSL', 5);
-    define('SWOOLE_TCP', 1); //´´½¨tcp socket
-    define('SWOOLE_TCP6', 2); //´´½¨tcp ipv6 socket
-    define('SWOOLE_UDP', 3); //´´½¨udp socket
-    define('SWOOLE_UDP6', 4); //´´½¨udp ipv6 socket
+    define('SWOOLE_TCP', 1); //åˆ›å»ºtcp socket
+    define('SWOOLE_TCP6', 2); //åˆ›å»ºtcp ipv6 socket
+    define('SWOOLE_UDP', 3); //åˆ›å»ºudp socket
+    define('SWOOLE_UDP6', 4); //åˆ›å»ºudp ipv6 socket
     define('SWOOLE_UNIX_DGRAM', 5);
     define('SWOOLE_UNIX_STREAM', 6);
-    define('SWOOLE_SOCK_SYNC', 0); //Í¬²½¿Í»§¶Ë
-    define('SWOOLE_SOCK_ASYNC', 1); //Òì²½¿Í»§¶Ë
-    define('SWOOLE_SYNC', 0); //Í¬²½¿Í»§¶Ë
-    define('SWOOLE_ASYNC', 1); //Òì²½¿Í»§¶Ë
+    define('SWOOLE_SOCK_SYNC', 0); //åŒæ­¥å®¢æˆ·ç«¯
+    define('SWOOLE_SOCK_ASYNC', 1); //å¼‚æ­¥å®¢æˆ·ç«¯
+    define('SWOOLE_SYNC', 0); //åŒæ­¥å®¢æˆ·ç«¯
+    define('SWOOLE_ASYNC', 1); //å¼‚æ­¥å®¢æˆ·ç«¯
 
-    define('SWOOLE_FILELOCK', 2); //´´½¨ÎÄ¼şËø
-    define('SWOOLE_MUTEX', 3); //´´½¨»¥³âËø
-    define('SWOOLE_RWLOCK', 1); //´´½¨¶ÁĞ´Ëø
-    define('SWOOLE_SPINLOCK', 5); //´´½¨×ÔĞıËø
-    define('SWOOLE_SEM', 4); //´´½¨ĞÅºÅÁ¿
+    define('SWOOLE_FILELOCK', 2); //åˆ›å»ºæ–‡ä»¶é”
+    define('SWOOLE_MUTEX', 3); //åˆ›å»ºäº’æ–¥é”
+    define('SWOOLE_RWLOCK', 1); //åˆ›å»ºè¯»å†™é”
+    define('SWOOLE_SPINLOCK', 5); //åˆ›å»ºè‡ªæ—‹é”
+    define('SWOOLE_SEM', 4); //åˆ›å»ºä¿¡å·é‡
     define('SWOOLE_EVENT_WRITE', 1);
     define('SWOOLE_EVENT_READ', 2);
 
     /**
-     * ´´½¨Ò»¸öswoole server×ÊÔ´¶ÔÏó
+     * åˆ›å»ºä¸€ä¸ªswoole serverèµ„æºå¯¹è±¡
      *
      * @param     $host
      * @param     $port
@@ -58,7 +58,7 @@ namespace {
     }
 
     /**
-     * º¯ÊıÓÃÓÚÉèÖÃswoole_serverÔËĞĞÊ±µÄ¸÷Ïî²ÎÊı¡£·şÎñÆ÷Æô¶¯ºóÍ¨¹ı $serv->setting À´·ÃÎÊ set º¯ÊıÉèÖÃµÄ²ÎÊıÊı×é¡£
+     * å‡½æ•°ç”¨äºè®¾ç½®swoole_serverè¿è¡Œæ—¶çš„å„é¡¹å‚æ•°ã€‚æœåŠ¡å™¨å¯åŠ¨åé€šè¿‡ $serv->setting æ¥è®¿é—® set å‡½æ•°è®¾ç½®çš„å‚æ•°æ•°ç»„ã€‚
      *
      * @param swoole_server $server
      * @param array         $setting
@@ -68,7 +68,7 @@ namespace {
     }
 
     /**
-     * ÓÃÓÚ»ñÈ¡MySQLiµÄsocketÎÄ¼şÃèÊö·û¡£¿É½«mysqlµÄsocketÔö¼Óµ½swooleÖĞ£¬Ö´ĞĞÒì²½MySQL²éÑ¯¡£
+     * ç”¨äºè·å–MySQLiçš„socketæ–‡ä»¶æè¿°ç¬¦ã€‚å¯å°†mysqlçš„socketå¢åŠ åˆ°swooleä¸­ï¼Œæ‰§è¡Œå¼‚æ­¥MySQLæŸ¥è¯¢ã€‚
      *
      * @param mysqli $db
      *
@@ -79,7 +79,7 @@ namespace {
     }
 
     /**
-     * ÓÃÓÚÉèÖÃ½ø³ÌµÄÃû³Æ
+     * ç”¨äºè®¾ç½®è¿›ç¨‹çš„åç§°
      *
      * @param string $name
      */
@@ -88,7 +88,7 @@ namespace {
     }
 
     /**
-     * »ñÈ¡swooleÀ©Õ¹µÄ°æ±¾ºÅ
+     * è·å–swooleæ‰©å±•çš„ç‰ˆæœ¬å·
      *
      * @return string
      */
@@ -97,7 +97,7 @@ namespace {
     }
 
     /**
-     * ½«±ê×¼µÄUnix Errno´íÎóÂë×ª»»³É´íÎóĞÅÏ¢
+     * å°†æ ‡å‡†çš„Unix Errnoé”™è¯¯ç è½¬æ¢æˆé”™è¯¯ä¿¡æ¯
      *
      * @param int $errno
      *
@@ -108,7 +108,7 @@ namespace {
     }
 
     /**
-     * »ñÈ¡×î½üÒ»´ÎÏµÍ³µ÷ÓÃµÄ´íÎóÂë£¬µÈÍ¬ÓÚC/C++µÄerrno±äÁ¿.
+     * è·å–æœ€è¿‘ä¸€æ¬¡ç³»ç»Ÿè°ƒç”¨çš„é”™è¯¯ç ï¼Œç­‰åŒäºC/C++çš„errnoå˜é‡.
      *
      * @return int
      */
@@ -117,8 +117,8 @@ namespace {
     }
 
     /**
-     * ´Ëº¯ÊıÓÃÓÚ»ñÈ¡±¾»úËùÓĞÍøÂç½Ó¿ÚµÄIPµØÖ·£¬Ä¿Ç°Ö»·µ»ØIPv4µØÖ·£¬·µ»Ø½á¹û»á¹ıÂËµô±¾µØloopµØÖ·127.0.0.1¡£
-     * ½á¹ûÊı×éÊÇÒÔinterfaceÃû³ÆÎªkeyµÄ¹ØÁªÊı×é¡£±ÈÈç array("eth0" => "192.168.1.100")
+     * æ­¤å‡½æ•°ç”¨äºè·å–æœ¬æœºæ‰€æœ‰ç½‘ç»œæ¥å£çš„IPåœ°å€ï¼Œç›®å‰åªè¿”å›IPv4åœ°å€ï¼Œè¿”å›ç»“æœä¼šè¿‡æ»¤æ‰æœ¬åœ°loopåœ°å€127.0.0.1ã€‚
+     * ç»“æœæ•°ç»„æ˜¯ä»¥interfaceåç§°ä¸ºkeyçš„å…³è”æ•°ç»„ã€‚æ¯”å¦‚ array("eth0" => "192.168.1.100")
      *
      * @return array
      */
@@ -132,25 +132,25 @@ namespace {
     class swoole_server
     {
         /**
-         * Ö÷½ø³ÌPID
+         * ä¸»è¿›ç¨‹PID
          *
          * @var int
          */
         public $master_pid;
         /**
-         * ¹ÜÀí½ø³ÌPID
+         * ç®¡ç†è¿›ç¨‹PID
          *
          * @var int
          */
         public $manager_pid;
         /**
-         * µ±Ç°WorkerµÄ½ø³ÌID£¬Óëposix_getpid()½á¹ûÒ»ÖÂ
+         * å½“å‰Workerçš„è¿›ç¨‹IDï¼Œä¸posix_getpid()ç»“æœä¸€è‡´
          *
          * @var int
          */
         public $worker_pid;
         /**
-         * µ±Ç°Worker½ø³ÌµÄID£¬0 - ($serv->setting[worker_num]-1)
+         * å½“å‰Workerè¿›ç¨‹çš„IDï¼Œ0 - ($serv->setting[worker_num]-1)
          *
          * @var int
          */
@@ -158,34 +158,34 @@ namespace {
 
 
         /**
-         * @param string $host      ²ÎÊıÓÃÀ´Ö¸¶¨¼àÌıµÄipµØÖ·£¬Èç127.0.0.1£¬»òÕßÍâÍøµØÖ·£¬»òÕß0.0.0.0¼àÌıÈ«²¿µØÖ·¡£
-         *                          IPv4Ê¹ÓÃ 127.0.0.1±íÊ¾¼àÌı±¾»ú£¬0.0.0.0±íÊ¾¼àÌıËùÓĞµØÖ·£»
-         *                          IPv6Ê¹ÓÃ::1±íÊ¾¼àÌı±¾»ú£¬:: (0:0:0:0:0:0:0:0) ±íÊ¾¼àÌıËùÓĞµØÖ·
-         * @param int    $port      ¼àÌıµÄ¶Ë¿Ú£¬Èç9501£¬¼àÌıĞ¡ÓÚ1024¶Ë¿ÚĞèÒªrootÈ¨ÏŞ£¬Èç¹û´Ë¶Ë¿Ú±»Õ¼ÓÃserver->startÊ±»áÊ§°Ü
-         * @param int    $mode      ÔËĞĞµÄÄ£Ê½£¬swooleÌá¹©ÁË3ÖÖÔËĞĞÄ£Ê½£¬Ä¬ÈÏÎª¶à½ø³ÌÄ£Ê½
-         * @param int    $sock_type Ö¸¶¨socketµÄÀàĞÍ£¬Ö§³ÖTCP/UDP¡¢TCP6/UDP6¡¢UnixSock Stream/Dgram 6ÖÖ¡£
-         *                          Ê¹ÓÃ$sock_type | SWOOLE_SSL¿ÉÒÔÆôÓÃSSL¼ÓÃÜ¡£ÆôÓÃSSLºó±ØĞëÅäÖÃssl_key_fileºÍssl_cert_file¡£
-         *                          1.7.11ºóÔö¼ÓÁË¶ÔUnix SocketµÄÖ§³Ö£¬ÏêÏ¸Çë²Î¼û /wiki/page/16.html¡£
-         *                          ¹¹Ôìº¯ÊıÖĞµÄ²ÎÊıÓëswoole_server::addlistenerÖĞÊÇÍêÈ«ÏàÍ¬µÄ¡£
+         * @param string $host      å‚æ•°ç”¨æ¥æŒ‡å®šç›‘å¬çš„ipåœ°å€ï¼Œå¦‚127.0.0.1ï¼Œæˆ–è€…å¤–ç½‘åœ°å€ï¼Œæˆ–è€…0.0.0.0ç›‘å¬å…¨éƒ¨åœ°å€ã€‚
+         *                          IPv4ä½¿ç”¨ 127.0.0.1è¡¨ç¤ºç›‘å¬æœ¬æœºï¼Œ0.0.0.0è¡¨ç¤ºç›‘å¬æ‰€æœ‰åœ°å€ï¼›
+         *                          IPv6ä½¿ç”¨::1è¡¨ç¤ºç›‘å¬æœ¬æœºï¼Œ:: (0:0:0:0:0:0:0:0) è¡¨ç¤ºç›‘å¬æ‰€æœ‰åœ°å€
+         * @param int    $port      ç›‘å¬çš„ç«¯å£ï¼Œå¦‚9501ï¼Œç›‘å¬å°äº1024ç«¯å£éœ€è¦rootæƒé™ï¼Œå¦‚æœæ­¤ç«¯å£è¢«å ç”¨server->startæ—¶ä¼šå¤±è´¥
+         * @param int    $mode      è¿è¡Œçš„æ¨¡å¼ï¼Œswooleæä¾›äº†3ç§è¿è¡Œæ¨¡å¼ï¼Œé»˜è®¤ä¸ºå¤šè¿›ç¨‹æ¨¡å¼
+         * @param int    $sock_type æŒ‡å®šsocketçš„ç±»å‹ï¼Œæ”¯æŒTCP/UDPã€TCP6/UDP6ã€UnixSock Stream/Dgram 6ç§ã€‚
+         *                          ä½¿ç”¨$sock_type | SWOOLE_SSLå¯ä»¥å¯ç”¨SSLåŠ å¯†ã€‚å¯ç”¨SSLåå¿…é¡»é…ç½®ssl_key_fileå’Œssl_cert_fileã€‚
+         *                          1.7.11åå¢åŠ äº†å¯¹Unix Socketçš„æ”¯æŒï¼Œè¯¦ç»†è¯·å‚è§ /wiki/page/16.htmlã€‚
+         *                          æ„é€ å‡½æ•°ä¸­çš„å‚æ•°ä¸swoole_server::addlistenerä¸­æ˜¯å®Œå…¨ç›¸åŒçš„ã€‚
          */
         public function __construct($host, $port, $mode = SWOOLE_PROCESS, $sock_type = SWOOLE_SOCK_TCP)
         {
         }
 
         /**
-         * ÓÃÓÚÉèÖÃ swoole_serverÔËĞĞÊ±µÄ¸÷Ïî²ÎÊı¡£·şÎñÆ÷Æô¶¯ºóÍ¨¹ı $serv->setting À´·ÃÎÊ set ·½·¨ÉèÖÃµÄ²ÎÊıÊı×é¡£
+         * ç”¨äºè®¾ç½® swoole_serverè¿è¡Œæ—¶çš„å„é¡¹å‚æ•°ã€‚æœåŠ¡å™¨å¯åŠ¨åé€šè¿‡ $serv->setting æ¥è®¿é—® set æ–¹æ³•è®¾ç½®çš„å‚æ•°æ•°ç»„ã€‚
          *
-         * @param array $setting ÉèÖÃÏî¹¹³ÉµÄÊı×é
+         * @param array $setting è®¾ç½®é¡¹æ„æˆçš„æ•°ç»„
          */
         public function set(array $setting)
         {
         }
 
         /**
-         * ×¢²áServerµÄÊÂ¼ş»Øµ÷º¯Êı
+         * æ³¨å†ŒServerçš„äº‹ä»¶å›è°ƒå‡½æ•°
          *
-         * @param string   $event    »Øµ÷µÄÃû³Æ, ´óĞ¡Ğ´²»Ãô¸Ğ£¬¾ßÌåÄÚÈİ²Î¿¼»Øµ÷º¯ÊıÁĞ±í.
-         * @param callable $callback »Øµ÷µÄPHPº¯Êı£¬¿ÉÒÔÊÇº¯ÊıÃûµÄ×Ö·û´®£¬Àà¾²Ì¬·½·¨£¬¶ÔÏó·½·¨Êı×é£¬ÄäÃûº¯Êı.
+         * @param string   $event    å›è°ƒçš„åç§°, å¤§å°å†™ä¸æ•æ„Ÿï¼Œå…·ä½“å†…å®¹å‚è€ƒå›è°ƒå‡½æ•°åˆ—è¡¨.
+         * @param callable $callback å›è°ƒçš„PHPå‡½æ•°ï¼Œå¯ä»¥æ˜¯å‡½æ•°åçš„å­—ç¬¦ä¸²ï¼Œç±»é™æ€æ–¹æ³•ï¼Œå¯¹è±¡æ–¹æ³•æ•°ç»„ï¼ŒåŒ¿åå‡½æ•°.
          *
          * @return boolean
          */
@@ -194,13 +194,13 @@ namespace {
         }
 
         /**
-         * ¿ÉÍ¨¹ı¸Ã·½·¨À´Ôö¼Ó¼àÌıµÄ¶Ë¿Ú¡£ÒµÎñ´úÂëÖĞ¿ÉÒÔÍ¨¹ıµ÷ÓÃswoole_server::connection_infoÀ´»ñÈ¡Ä³¸öÁ¬½ÓÀ´×ÔÓÚÄÄ¸ö¶Ë¿Ú¡£
+         * å¯é€šè¿‡è¯¥æ–¹æ³•æ¥å¢åŠ ç›‘å¬çš„ç«¯å£ã€‚ä¸šåŠ¡ä»£ç ä¸­å¯ä»¥é€šè¿‡è°ƒç”¨swoole_server::connection_infoæ¥è·å–æŸä¸ªè¿æ¥æ¥è‡ªäºå“ªä¸ªç«¯å£ã€‚
          *
-         * @param string $host      ²ÎÊıÓÃÀ´Ö¸¶¨¼àÌıµÄipµØÖ·£¬Èç127.0.0.1£¬»òÕßÍâÍøµØÖ·£¬»òÕß0.0.0.0¼àÌıÈ«²¿µØÖ·¡£
-         *                          IPv4Ê¹ÓÃ 127.0.0.1±íÊ¾¼àÌı±¾»ú£¬0.0.0.0±íÊ¾¼àÌıËùÓĞµØÖ·£»
-         *                          IPv6Ê¹ÓÃ::1±íÊ¾¼àÌı±¾»ú£¬:: (0:0:0:0:0:0:0:0) ±íÊ¾¼àÌıËùÓĞµØÖ·¡£
-         * @param int    $port      ¼àÌıµÄ¶Ë¿Ú£¬Èç9501£¬¼àÌıĞ¡ÓÚ1024¶Ë¿ÚĞèÒªrootÈ¨ÏŞ£¬Èç¹û´Ë¶Ë¿Ú±»Õ¼ÓÃserver->startÊ±»áÊ§°Ü¡£
-         * @param int    $type      Ö¸¶¨socketµÄÀàĞÍ£¬
+         * @param string $host      å‚æ•°ç”¨æ¥æŒ‡å®šç›‘å¬çš„ipåœ°å€ï¼Œå¦‚127.0.0.1ï¼Œæˆ–è€…å¤–ç½‘åœ°å€ï¼Œæˆ–è€…0.0.0.0ç›‘å¬å…¨éƒ¨åœ°å€ã€‚
+         *                          IPv4ä½¿ç”¨ 127.0.0.1è¡¨ç¤ºç›‘å¬æœ¬æœºï¼Œ0.0.0.0è¡¨ç¤ºç›‘å¬æ‰€æœ‰åœ°å€ï¼›
+         *                          IPv6ä½¿ç”¨::1è¡¨ç¤ºç›‘å¬æœ¬æœºï¼Œ:: (0:0:0:0:0:0:0:0) è¡¨ç¤ºç›‘å¬æ‰€æœ‰åœ°å€ã€‚
+         * @param int    $port      ç›‘å¬çš„ç«¯å£ï¼Œå¦‚9501ï¼Œç›‘å¬å°äº1024ç«¯å£éœ€è¦rootæƒé™ï¼Œå¦‚æœæ­¤ç«¯å£è¢«å ç”¨server->startæ—¶ä¼šå¤±è´¥ã€‚
+         * @param int    $type      æŒ‡å®šsocketçš„ç±»å‹ï¼Œ
          *
          * @return boolean
          */
@@ -209,27 +209,27 @@ namespace {
         }
 
         /**
-         * Ìí¼ÓÒ»¸öÓÃ»§×Ô¶¨ÒåµÄ¹¤×÷½ø³Ì¡£
+         * æ·»åŠ ä¸€ä¸ªç”¨æˆ·è‡ªå®šä¹‰çš„å·¥ä½œè¿›ç¨‹ã€‚
          *
-         * @param swoole_process $process swoole_process¶ÔÏó£¬×¢Òâ²»ĞèÒªÖ´ĞĞstart¡£ÔÚswoole_serverÆô¶¯Ê±»á×Ô¶¯´´½¨½ø³Ì£¬
-         *                                ²¢Ö´ĞĞÖ¸¶¨µÄ×Ó½ø³Ìº¯Êı£»
-         *                                ´´½¨µÄ×Ó½ø³Ì¿ÉÒÔµ÷ÓÃ$server¶ÔÏóÌá¹©µÄ¸÷¸ö·½·¨£¬Èçconnection_list/connection_info/stats£»
-         *                                ÔÚworker/task½ø³ÌÖĞ¿ÉÒÔµ÷ÓÃ$processÌá¹©µÄ·½·¨Óë×Ó½ø³Ì½øĞĞÍ¨ĞÅ£»
-         *                                ÔÚÓÃ»§×Ô¶¨Òå½ø³ÌÖĞ¿ÉÒÔµ÷ÓÃ$server->sendMessageÓëworker/task½ø³ÌÍ¨ĞÅ¡£
-         *                                ´Ëº¯ÊıÍ¨³£ÓÃÓÚ´´½¨Ò»¸öÌØÊâµÄ¹¤×÷½ø³Ì£¬ÓÃÓÚ¼à¿Ø¡¢ÉÏ±¨»òÕßÆäËûÌØÊâµÄÈÎÎñ¡£
+         * @param swoole_process $process swoole_processå¯¹è±¡ï¼Œæ³¨æ„ä¸éœ€è¦æ‰§è¡Œstartã€‚åœ¨swoole_serverå¯åŠ¨æ—¶ä¼šè‡ªåŠ¨åˆ›å»ºè¿›ç¨‹ï¼Œ
+         *                                å¹¶æ‰§è¡ŒæŒ‡å®šçš„å­è¿›ç¨‹å‡½æ•°ï¼›
+         *                                åˆ›å»ºçš„å­è¿›ç¨‹å¯ä»¥è°ƒç”¨$serverå¯¹è±¡æä¾›çš„å„ä¸ªæ–¹æ³•ï¼Œå¦‚connection_list/connection_info/statsï¼›
+         *                                åœ¨worker/taskè¿›ç¨‹ä¸­å¯ä»¥è°ƒç”¨$processæä¾›çš„æ–¹æ³•ä¸å­è¿›ç¨‹è¿›è¡Œé€šä¿¡ï¼›
+         *                                åœ¨ç”¨æˆ·è‡ªå®šä¹‰è¿›ç¨‹ä¸­å¯ä»¥è°ƒç”¨$server->sendMessageä¸worker/taskè¿›ç¨‹é€šä¿¡ã€‚
+         *                                æ­¤å‡½æ•°é€šå¸¸ç”¨äºåˆ›å»ºä¸€ä¸ªç‰¹æ®Šçš„å·¥ä½œè¿›ç¨‹ï¼Œç”¨äºç›‘æ§ã€ä¸ŠæŠ¥æˆ–è€…å…¶ä»–ç‰¹æ®Šçš„ä»»åŠ¡ã€‚
          */
         public function addProcess(swoole_process $process)
         {
         }
 
         /**
-         * ¼àÌıÒ»¸öĞÂµÄServer¶Ë¿Ú£¬´Ë·½·¨ÊÇ addlistener µÄ±ğÃû¡£
+         * ç›‘å¬ä¸€ä¸ªæ–°çš„Serverç«¯å£ï¼Œæ­¤æ–¹æ³•æ˜¯ addlistener çš„åˆ«åã€‚
          *
-         * @param string $host      ²ÎÊıÓÃÀ´Ö¸¶¨¼àÌıµÄipµØÖ·£¬Èç127.0.0.1£¬»òÕßÍâÍøµØÖ·£¬»òÕß0.0.0.0¼àÌıÈ«²¿µØÖ·¡£
-         *                          IPv4Ê¹ÓÃ 127.0.0.1±íÊ¾¼àÌı±¾»ú£¬0.0.0.0±íÊ¾¼àÌıËùÓĞµØÖ·£»
-         *                          IPv6Ê¹ÓÃ::1±íÊ¾¼àÌı±¾»ú£¬:: (0:0:0:0:0:0:0:0) ±íÊ¾¼àÌıËùÓĞµØÖ·¡£
-         * @param int    $port      ¼àÌıµÄ¶Ë¿Ú£¬Èç9501£¬¼àÌıĞ¡ÓÚ1024¶Ë¿ÚĞèÒªrootÈ¨ÏŞ£¬Èç¹û´Ë¶Ë¿Ú±»Õ¼ÓÃserver->startÊ±»áÊ§°Ü¡£
-         * @param int    $type      Ö¸¶¨socketµÄÀàĞÍ£¬
+         * @param string $host      å‚æ•°ç”¨æ¥æŒ‡å®šç›‘å¬çš„ipåœ°å€ï¼Œå¦‚127.0.0.1ï¼Œæˆ–è€…å¤–ç½‘åœ°å€ï¼Œæˆ–è€…0.0.0.0ç›‘å¬å…¨éƒ¨åœ°å€ã€‚
+         *                          IPv4ä½¿ç”¨ 127.0.0.1è¡¨ç¤ºç›‘å¬æœ¬æœºï¼Œ0.0.0.0è¡¨ç¤ºç›‘å¬æ‰€æœ‰åœ°å€ï¼›
+         *                          IPv6ä½¿ç”¨::1è¡¨ç¤ºç›‘å¬æœ¬æœºï¼Œ:: (0:0:0:0:0:0:0:0) è¡¨ç¤ºç›‘å¬æ‰€æœ‰åœ°å€ã€‚
+         * @param int    $port      ç›‘å¬çš„ç«¯å£ï¼Œå¦‚9501ï¼Œç›‘å¬å°äº1024ç«¯å£éœ€è¦rootæƒé™ï¼Œå¦‚æœæ­¤ç«¯å£è¢«å ç”¨server->startæ—¶ä¼šå¤±è´¥ã€‚
+         * @param int    $type      æŒ‡å®šsocketçš„ç±»å‹ï¼Œ
          *
          * @return boolean
          */
@@ -238,9 +238,9 @@ namespace {
         }
 
         /**
-         * Æô¶¯server£¬¼àÌıËùÓĞTCP/UDP¶Ë¿Ú
+         * å¯åŠ¨serverï¼Œç›‘å¬æ‰€æœ‰TCP/UDPç«¯å£
          *
-         * Æô¶¯³É¹¦ºó»á´´½¨worker_num+2¸ö½ø³Ì¡£Ö÷½ø³Ì+Manager½ø³Ì+worker_num¸öWorker½ø³Ì¡£
+         * å¯åŠ¨æˆåŠŸåä¼šåˆ›å»ºworker_num+2ä¸ªè¿›ç¨‹ã€‚ä¸»è¿›ç¨‹+Managerè¿›ç¨‹+worker_numä¸ªWorkerè¿›ç¨‹ã€‚
          *
          * @return boolean
          */
@@ -249,9 +249,9 @@ namespace {
         }
 
         /**
-         * ÖØÆôËùÓĞworker½ø³Ì
+         * é‡å¯æ‰€æœ‰workerè¿›ç¨‹
          *
-         * @param bool|false $only_reload_taskworkrer ÊÇ·ñ½öÖØÆôtask½ø³Ì
+         * @param bool|false $only_reload_taskworkrer æ˜¯å¦ä»…é‡å¯taskè¿›ç¨‹
          *
          * @return boolean
          */
@@ -260,26 +260,26 @@ namespace {
         }
 
         /**
-         * ¹Ø±Õ·şÎñÆ÷
+         * å…³é—­æœåŠ¡å™¨
          */
         public function shutdown()
         {
         }
 
         /**
-         * ÔÚÖ¸¶¨µÄÊ±¼äºóÖ´ĞĞº¯Êı£¬ĞèÒªswoole-1.7.7ÒÔÉÏ°æ±¾¡£¸Ã·½·¨ÊÇÒ»¸öÒ»´ÎĞÔ¶¨Ê±Æ÷£¬Ö´ĞĞÍê³Éºó¾Í»áÏú»Ù¡£
+         * åœ¨æŒ‡å®šçš„æ—¶é—´åæ‰§è¡Œå‡½æ•°ï¼Œéœ€è¦swoole-1.7.7ä»¥ä¸Šç‰ˆæœ¬ã€‚è¯¥æ–¹æ³•æ˜¯ä¸€ä¸ªä¸€æ¬¡æ€§å®šæ—¶å™¨ï¼Œæ‰§è¡Œå®Œæˆåå°±ä¼šé”€æ¯ã€‚
          *
-         * @param int      $after_time_ms Ö¸¶¨Ê±¼ä£¬µ¥Î»ÎªºÁÃë
-         * @param callable $callback      Ê±¼äµ½ÆÚºóËùÖ´ĞĞµÄº¯Êı£¬±ØĞëÊÇ¿ÉÒÔµ÷ÓÃµÄ¡£callbackº¯Êı²»½ÓÊÜÈÎºÎ²ÎÊı¡£
+         * @param int      $after_time_ms æŒ‡å®šæ—¶é—´ï¼Œå•ä½ä¸ºæ¯«ç§’
+         * @param callable $callback      æ—¶é—´åˆ°æœŸåæ‰€æ‰§è¡Œçš„å‡½æ•°ï¼Œå¿…é¡»æ˜¯å¯ä»¥è°ƒç”¨çš„ã€‚callbackå‡½æ•°ä¸æ¥å—ä»»ä½•å‚æ•°ã€‚
          */
         public function after($after_time_ms, callable $callback)
         {
         }
 
         /**
-         * ¹Ø±Õ¿Í»§¶ËÁ¬½Ó
+         * å…³é—­å®¢æˆ·ç«¯è¿æ¥
          *
-         * ServerÖ÷¶¯ close Á¬½Ó£¬Ò²Ò»Ñù»á´¥·¢ onClose ÊÂ¼ş¡£²»ÒªÔÚ close Ö®ºóĞ´ÇåÀíÂß¼­¡£Ó¦µ±·ÅÖÃµ½ onClose »Øµ÷ÖĞ´¦Àí¡£
+         * Serverä¸»åŠ¨ close è¿æ¥ï¼Œä¹Ÿä¸€æ ·ä¼šè§¦å‘ onClose äº‹ä»¶ã€‚ä¸è¦åœ¨ close ä¹‹åå†™æ¸…ç†é€»è¾‘ã€‚åº”å½“æ”¾ç½®åˆ° onClose å›è°ƒä¸­å¤„ç†ã€‚
          *
          * @param int $fd
          * @param int $from_id
@@ -291,12 +291,12 @@ namespace {
         }
 
         /**
-         * Ïò¿Í»§¶Ë·¢ËÍÊı¾İ
+         * å‘å®¢æˆ·ç«¯å‘é€æ•°æ®
          *
-         * send ²Ù×÷¾ßÓĞÔ­×ÓĞÔ£¬¶à¸ö½ø³ÌÍ¬Ê±µ÷ÓÃ send ÏòÍ¬Ò»¸öÁ¬½Ó·¢ËÍÊı¾İ£¬²»»á·¢ÉúÊı¾İ»ìÔÓ.
+         * send æ“ä½œå…·æœ‰åŸå­æ€§ï¼Œå¤šä¸ªè¿›ç¨‹åŒæ—¶è°ƒç”¨ send å‘åŒä¸€ä¸ªè¿æ¥å‘é€æ•°æ®ï¼Œä¸ä¼šå‘ç”Ÿæ•°æ®æ··æ‚.
          *
          * @param int    $fd
-         * @param string $data ·¢ËÍµÄÊı¾İ¡£TCPĞ­Òé×î´ó²»µÃ³¬¹ı2M£¬UDPĞ­Òé²»µÃ³¬¹ı64K.
+         * @param string $data å‘é€çš„æ•°æ®ã€‚TCPåè®®æœ€å¤§ä¸å¾—è¶…è¿‡2Mï¼ŒUDPåè®®ä¸å¾—è¶…è¿‡64K.
          * @param int    $from_id
          *
          * @return boolean
@@ -306,13 +306,13 @@ namespace {
         }
 
         /**
-         * ·¢ËÍÎÄ¼şµ½TCP¿Í»§¶ËÁ¬½Ó
+         * å‘é€æ–‡ä»¶åˆ°TCPå®¢æˆ·ç«¯è¿æ¥
          *
-         * sendfile ·½·¨µ÷ÓÃOSÌá¹©µÄ sendfile ÏµÍ³µ÷ÓÃ£¬ÓÉ²Ù×÷ÏµÍ³Ö±½Ó¶ÁÈ¡ÎÄ¼ş²¢Ğ´Èë socket¡£sendfile Ö»ÓĞ 2 ´ÎÄÚ´æ¿½±´£¬
-         * Ê¹ÓÃ´Ëº¯Êı¿ÉÒÔ½µµÍ·¢ËÍ´óÁ¿ÎÄ¼şÊ±²Ù×÷ÏµÍ³µÄCPUºÍÄÚ´æÕ¼ÓÃ¡£
+         * sendfile æ–¹æ³•è°ƒç”¨OSæä¾›çš„ sendfile ç³»ç»Ÿè°ƒç”¨ï¼Œç”±æ“ä½œç³»ç»Ÿç›´æ¥è¯»å–æ–‡ä»¶å¹¶å†™å…¥ socketã€‚sendfile åªæœ‰ 2 æ¬¡å†…å­˜æ‹·è´ï¼Œ
+         * ä½¿ç”¨æ­¤å‡½æ•°å¯ä»¥é™ä½å‘é€å¤§é‡æ–‡ä»¶æ—¶æ“ä½œç³»ç»Ÿçš„CPUå’Œå†…å­˜å ç”¨ã€‚
          *
          * @param int    $fd
-         * @param string $filename Òª·¢ËÍµÄÎÄ¼şÂ·¾¶£¬Èç¹ûÎÄ¼ş²»´æÔÚ»á·µ»Øfalse
+         * @param string $filename è¦å‘é€çš„æ–‡ä»¶è·¯å¾„ï¼Œå¦‚æœæ–‡ä»¶ä¸å­˜åœ¨ä¼šè¿”å›false
          *
          * @return boolean
          */
@@ -321,12 +321,12 @@ namespace {
         }
 
         /**
-         * ÏòÈÎÒâµÄ¿Í»§¶Ë IP:PORT ·¢ËÍ UDP Êı¾İ°ü
+         * å‘ä»»æ„çš„å®¢æˆ·ç«¯ IP:PORT å‘é€ UDP æ•°æ®åŒ…
          *
-         * @param string     $ip   IPv4×Ö·û´®£¬Èç192.168.1.102¡£Èç¹ûIP²»ºÏ·¨»á·µ»Ø´íÎó
-         * @param int        $port Îª 1-65535µÄÍøÂç¶Ë¿ÚºÅ£¬Èç¹û¶Ë¿Ú´íÎó·¢ËÍ»áÊ§°Ü
-         * @param string     $data Òª·¢ËÍµÄÊı¾İÄÚÈİ£¬¿ÉÒÔÊÇÎÄ±¾»òÕß¶ş½øÖÆÄÚÈİ
-         * @param bool|false $ipv6 ÊÇ·ñÎªIPv6µØÖ·£¬¿ÉÑ¡²ÎÊı£¬Ä¬ÈÏÎªfalse
+         * @param string     $ip   IPv4å­—ç¬¦ä¸²ï¼Œå¦‚192.168.1.102ã€‚å¦‚æœIPä¸åˆæ³•ä¼šè¿”å›é”™è¯¯
+         * @param int        $port ä¸º 1-65535çš„ç½‘ç»œç«¯å£å·ï¼Œå¦‚æœç«¯å£é”™è¯¯å‘é€ä¼šå¤±è´¥
+         * @param string     $data è¦å‘é€çš„æ•°æ®å†…å®¹ï¼Œå¯ä»¥æ˜¯æ–‡æœ¬æˆ–è€…äºŒè¿›åˆ¶å†…å®¹
+         * @param bool|false $ipv6 æ˜¯å¦ä¸ºIPv6åœ°å€ï¼Œå¯é€‰å‚æ•°ï¼Œé»˜è®¤ä¸ºfalse
          *
          * @return boolean
          */
@@ -335,14 +335,14 @@ namespace {
         }
 
         /**
-         * ×èÈûµØÏò¿Í»§¶Ë·¢ËÍÊı¾İ
+         * é˜»å¡åœ°å‘å®¢æˆ·ç«¯å‘é€æ•°æ®
          *
-         * ÓĞÒ»Ğ©ÌØÊâµÄ³¡¾°£¬ServerĞèÒªÁ¬ĞøÏò¿Í»§¶Ë·¢ËÍÊı¾İ£¬¶øswoole_server->sendÊı¾İ·¢ËÍ½Ó¿ÚÊÇ´¿Òì²½µÄ£¬
-         * ´óÁ¿Êı¾İ·¢ËÍ»áµ¼ÖÂÄÚ´æ·¢ËÍ¶ÓÁĞÈûÂú¡£
+         * æœ‰ä¸€äº›ç‰¹æ®Šçš„åœºæ™¯ï¼ŒServeréœ€è¦è¿ç»­å‘å®¢æˆ·ç«¯å‘é€æ•°æ®ï¼Œè€Œswoole_server->sendæ•°æ®å‘é€æ¥å£æ˜¯çº¯å¼‚æ­¥çš„ï¼Œ
+         * å¤§é‡æ•°æ®å‘é€ä¼šå¯¼è‡´å†…å­˜å‘é€é˜Ÿåˆ—å¡æ»¡ã€‚
          *
-         * Ê¹ÓÃ swoole_server->sendwait ¾Í¿ÉÒÔ½â¾ö´ËÎÊÌâ£¬swoole_server->sendwait »á×èÈûµÈ´ıÁ¬½Ó¿ÉĞ´¡£Ö±µ½Êı¾İ·¢ËÍÍê±Ï²Å»á·µ»Ø.
+         * ä½¿ç”¨ swoole_server->sendwait å°±å¯ä»¥è§£å†³æ­¤é—®é¢˜ï¼Œswoole_server->sendwait ä¼šé˜»å¡ç­‰å¾…è¿æ¥å¯å†™ã€‚ç›´åˆ°æ•°æ®å‘é€å®Œæ¯•æ‰ä¼šè¿”å›.
          *
-         * sendwaitÄ¿Ç°½ö¿ÉÓÃÓÚ SWOOLE_BASE Ä£Ê½
+         * sendwaitç›®å‰ä»…å¯ç”¨äº SWOOLE_BASE æ¨¡å¼
          *
          * @param int    $fd
          * @param string $data
@@ -354,10 +354,10 @@ namespace {
         }
 
         /**
-         * ´Ëº¯Êı¿ÉÒÔÏòÈÎÒâworker½ø³Ì»òÕßtask½ø³Ì·¢ËÍÏûÏ¢¡£ÔÚ·ÇÖ÷½ø³ÌºÍ¹ÜÀí½ø³ÌÖĞ¿Éµ÷ÓÃ¡£ÊÕµ½ÏûÏ¢µÄ½ø³Ì»á´¥·¢onPipeMessageÊÂ¼ş¡£
+         * æ­¤å‡½æ•°å¯ä»¥å‘ä»»æ„workerè¿›ç¨‹æˆ–è€…taskè¿›ç¨‹å‘é€æ¶ˆæ¯ã€‚åœ¨éä¸»è¿›ç¨‹å’Œç®¡ç†è¿›ç¨‹ä¸­å¯è°ƒç”¨ã€‚æ”¶åˆ°æ¶ˆæ¯çš„è¿›ç¨‹ä¼šè§¦å‘onPipeMessageäº‹ä»¶ã€‚
          *
-         * @param string $message       ·¢ËÍµÄÏûÏ¢Êı¾İÄÚÈİ
-         * @param int    $dst_worker_id Ä¿±ê½ø³ÌµÄID£¬·¶Î§ÊÇ0 ~ (worker_num + task_worker_num - 1)
+         * @param string $message       å‘é€çš„æ¶ˆæ¯æ•°æ®å†…å®¹
+         * @param int    $dst_worker_id ç›®æ ‡è¿›ç¨‹çš„IDï¼ŒèŒƒå›´æ˜¯0 ~ (worker_num + task_worker_num - 1)
          *
          * @return boolean
          */
@@ -366,9 +366,9 @@ namespace {
         }
 
         /**
-         * ¼ì²âfd¶ÔÓ¦µÄÁ¬½ÓÊÇ·ñ´æÔÚ.ÔÚ1.7.18ÒÔÉÏ°æ±¾¿ÉÓÃ.
+         * æ£€æµ‹fdå¯¹åº”çš„è¿æ¥æ˜¯å¦å­˜åœ¨.åœ¨1.7.18ä»¥ä¸Šç‰ˆæœ¬å¯ç”¨.
          *
-         * @param int $fd ¶ÔÓ¦µÄTCPÁ¬½Ó´æÔÚ·µ»Øtrue£¬²»´æÔÚ·µ»Øfalse.
+         * @param int $fd å¯¹åº”çš„TCPè¿æ¥å­˜åœ¨è¿”å›trueï¼Œä¸å­˜åœ¨è¿”å›false.
          *
          * @return boolean
          */
@@ -377,13 +377,13 @@ namespace {
         }
 
         /**
-         * ÓÃÀ´»ñÈ¡Á¬½ÓµÄĞÅÏ¢
+         * ç”¨æ¥è·å–è¿æ¥çš„ä¿¡æ¯
          *
-         * Èç¹û´«ÈëµÄfd´æÔÚ£¬½«»á·µ»ØÒ»¸öÊı×é£¬Á¬½Ó²»´æÔÚ»òÒÑ¹Ø±Õ£¬·µ»Øfalse¡£µÚ3¸ö²ÎÊıÉèÖÃÎªtrue£¬¼´Ê¹Á¬½Ó¹Ø±ÕÒ²»á·µ»ØÁ¬½ÓµÄĞÅÏ¢¡£
+         * å¦‚æœä¼ å…¥çš„fdå­˜åœ¨ï¼Œå°†ä¼šè¿”å›ä¸€ä¸ªæ•°ç»„ï¼Œè¿æ¥ä¸å­˜åœ¨æˆ–å·²å…³é—­ï¼Œè¿”å›falseã€‚ç¬¬3ä¸ªå‚æ•°è®¾ç½®ä¸ºtrueï¼Œå³ä½¿è¿æ¥å…³é—­ä¹Ÿä¼šè¿”å›è¿æ¥çš„ä¿¡æ¯ã€‚
          *
          * @param int        $fd
          * @param int        $from_id
-         * @param bool|false $ignore_close ÈôÎª true ¼´Ê¹Á¬½Ó¹Ø±ÕÒ²»á·µ»ØÁ¬½ÓµÄĞÅÏ¢
+         * @param bool|false $ignore_close è‹¥ä¸º true å³ä½¿è¿æ¥å…³é—­ä¹Ÿä¼šè¿”å›è¿æ¥çš„ä¿¡æ¯
          *
          * @return array|boolean
          */
@@ -392,16 +392,16 @@ namespace {
         }
 
         /**
-         * ÓÃÀ´±éÀúµ±Ç°ServerËùÓĞµÄ¿Í»§¶ËÁ¬½Ó£¬connection_list·½·¨ÊÇ»ùÓÚ¹²ÏíÄÚ´æµÄ£¬²»´æÔÚIOWait£¬±éÀúµÄËÙ¶ÈºÜ¿ì¡£
+         * ç”¨æ¥éå†å½“å‰Serveræ‰€æœ‰çš„å®¢æˆ·ç«¯è¿æ¥ï¼Œconnection_listæ–¹æ³•æ˜¯åŸºäºå…±äº«å†…å­˜çš„ï¼Œä¸å­˜åœ¨IOWaitï¼Œéå†çš„é€Ÿåº¦å¾ˆå¿«ã€‚
          *
-         * ÁíÍâconnection_list»á·µ»ØËùÓĞTCPÁ¬½Ó£¬¶ø²»½ö½öÊÇµ±Ç°worker½ø³ÌµÄTCPÁ¬½Ó¡£
+         * å¦å¤–connection_listä¼šè¿”å›æ‰€æœ‰TCPè¿æ¥ï¼Œè€Œä¸ä»…ä»…æ˜¯å½“å‰workerè¿›ç¨‹çš„TCPè¿æ¥ã€‚
          *
-         * µ÷ÓÃ³É¹¦½«·µ»ØÒ»¸öÊı×ÖË÷ÒıÊı×é£¬ÔªËØÊÇÈ¡µ½µÄ$fd¡£Êı×é»á°´´ÓĞ¡µ½´óÅÅĞò¡£×îºóÒ»¸ö$fd×÷ÎªĞÂµÄstart_fdÔÙ´Î³¢ÊÔ»ñÈ¡.
+         * è°ƒç”¨æˆåŠŸå°†è¿”å›ä¸€ä¸ªæ•°å­—ç´¢å¼•æ•°ç»„ï¼Œå…ƒç´ æ˜¯å–åˆ°çš„$fdã€‚æ•°ç»„ä¼šæŒ‰ä»å°åˆ°å¤§æ’åºã€‚æœ€åä¸€ä¸ª$fdä½œä¸ºæ–°çš„start_fdå†æ¬¡å°è¯•è·å–.
          *
-         * µ÷ÓÃÊ§°Ü·µ»Øfalse
+         * è°ƒç”¨å¤±è´¥è¿”å›false
          *
-         * @param int $start    ÆğÊ¼fd
-         * @param int $pagesize Ã¿Ò³È¡¶àÉÙÌõ£¬×î´ó²»µÃ³¬¹ı100
+         * @param int $start    èµ·å§‹fd
+         * @param int $pagesize æ¯é¡µå–å¤šå°‘æ¡ï¼Œæœ€å¤§ä¸å¾—è¶…è¿‡100
          *
          * @return boolean
          */
@@ -410,12 +410,12 @@ namespace {
         }
 
         /**
-         * ½«Á¬½Ó°ó¶¨Ò»¸öÓÃ»§¶¨ÒåµÄID£¬¿ÉÒÔÉèÖÃdispatch_mode=5ÉèÖÃÒÑ´ËIDÖµ½øĞĞhash¹Ì¶¨·ÖÅä¡£
+         * å°†è¿æ¥ç»‘å®šä¸€ä¸ªç”¨æˆ·å®šä¹‰çš„IDï¼Œå¯ä»¥è®¾ç½®dispatch_mode=5è®¾ç½®å·²æ­¤IDå€¼è¿›è¡Œhashå›ºå®šåˆ†é…ã€‚
          *
-         * ¿ÉÒÔ±£Ö¤Ä³Ò»¸öUIDµÄÁ¬½ÓÈ«²¿»á·ÖÅäµ½Í¬Ò»¸öWorker½ø³Ì¡£
+         * å¯ä»¥ä¿è¯æŸä¸€ä¸ªUIDçš„è¿æ¥å…¨éƒ¨ä¼šåˆ†é…åˆ°åŒä¸€ä¸ªWorkerè¿›ç¨‹ã€‚
          *
-         * @param int $fd  Á¬½ÓµÄÎÄ¼şÃèÊö·û
-         * @param int $uid Ö¸¶¨UID
+         * @param int $fd  è¿æ¥çš„æ–‡ä»¶æè¿°ç¬¦
+         * @param int $uid æŒ‡å®šUID
          *
          * @return boolean
          */
@@ -424,7 +424,7 @@ namespace {
         }
 
         /**
-         * µÃµ½µ±Ç°ServerµÄ»î¶¯TCPÁ¬½ÓÊı£¬Æô¶¯Ê±¼ä£¬accpet/closeµÄ×Ü´ÎÊıµÈĞÅÏ¢¡£
+         * å¾—åˆ°å½“å‰Serverçš„æ´»åŠ¨TCPè¿æ¥æ•°ï¼Œå¯åŠ¨æ—¶é—´ï¼Œaccpet/closeçš„æ€»æ¬¡æ•°ç­‰ä¿¡æ¯ã€‚
          *
          * @return array
          */
@@ -433,10 +433,10 @@ namespace {
         }
 
         /**
-         * Í¶µİÒ»¸öÒì²½ÈÎÎñµ½task_worker³ØÖĞ¡£´Ëº¯Êı»áÁ¢¼´·µ»Ø¡£worker½ø³Ì¿ÉÒÔ¼ÌĞø´¦ÀíĞÂµÄÇëÇó¡£
+         * æŠ•é€’ä¸€ä¸ªå¼‚æ­¥ä»»åŠ¡åˆ°task_workeræ± ä¸­ã€‚æ­¤å‡½æ•°ä¼šç«‹å³è¿”å›ã€‚workerè¿›ç¨‹å¯ä»¥ç»§ç»­å¤„ç†æ–°çš„è¯·æ±‚ã€‚
          *
-         * @param mixed $data          ÒªÍ¶µİµÄÈÎÎñÊı¾İ£¬¿ÉÒÔÎª³ı×ÊÔ´ÀàĞÍÖ®ÍâµÄÈÎÒâPHP±äÁ¿
-         * @param int   $dst_worker_id ¿ÉÒÔÖÆ¶¨Òª¸øÍ¶µİ¸øÄÄ¸ötask½ø³Ì£¬´«ÈëID¼´¿É£¬·¶Î§ÊÇ0 - (serv->task_worker_num -1)
+         * @param mixed $data          è¦æŠ•é€’çš„ä»»åŠ¡æ•°æ®ï¼Œå¯ä»¥ä¸ºé™¤èµ„æºç±»å‹ä¹‹å¤–çš„ä»»æ„PHPå˜é‡
+         * @param int   $dst_worker_id å¯ä»¥åˆ¶å®šè¦ç»™æŠ•é€’ç»™å“ªä¸ªtaskè¿›ç¨‹ï¼Œä¼ å…¥IDå³å¯ï¼ŒèŒƒå›´æ˜¯0 - (serv->task_worker_num -1)
          *
          * @return boolean|int
          */
@@ -445,8 +445,8 @@ namespace {
         }
 
         /**
-         * taskwaitÓëtask·½·¨×÷ÓÃÏàÍ¬£¬ÓÃÓÚÍ¶µİÒ»¸öÒì²½µÄÈÎÎñµ½task½ø³Ì³ØÈ¥Ö´ĞĞ¡£Óëtask²»Í¬µÄÊÇtaskwaitÊÇ×èÈûµÈ´ıµÄ£¬
-         * Ö±µ½ÈÎÎñÍê³É»òÕß³¬Ê±·µ»Ø¡£
+         * taskwaitä¸taskæ–¹æ³•ä½œç”¨ç›¸åŒï¼Œç”¨äºæŠ•é€’ä¸€ä¸ªå¼‚æ­¥çš„ä»»åŠ¡åˆ°taskè¿›ç¨‹æ± å»æ‰§è¡Œã€‚ä¸taskä¸åŒçš„æ˜¯taskwaitæ˜¯é˜»å¡ç­‰å¾…çš„ï¼Œ
+         * ç›´åˆ°ä»»åŠ¡å®Œæˆæˆ–è€…è¶…æ—¶è¿”å›ã€‚
          *
          * @param mixed $task_data
          * @param float $timeout
@@ -459,7 +459,7 @@ namespace {
         }
 
         /**
-         * ´Ëº¯ÊıÓÃÓÚÔÚtask½ø³ÌÖĞÍ¨Öªworker½ø³Ì£¬Í¶µİµÄÈÎÎñÒÑÍê³É¡£´Ëº¯Êı¿ÉÒÔ´«µİ½á¹ûÊı¾İ¸øworker½ø³Ì¡£
+         * æ­¤å‡½æ•°ç”¨äºåœ¨taskè¿›ç¨‹ä¸­é€šçŸ¥workerè¿›ç¨‹ï¼ŒæŠ•é€’çš„ä»»åŠ¡å·²å®Œæˆã€‚æ­¤å‡½æ•°å¯ä»¥ä¼ é€’ç»“æœæ•°æ®ç»™workerè¿›ç¨‹ã€‚
          *
          * @param string $message
          */
@@ -468,9 +468,9 @@ namespace {
         }
 
         /**
-         * ¼ì²â·şÎñÆ÷ËùÓĞÁ¬½Ó£¬²¢ÕÒ³öÒÑ¾­³¬¹ıÔ¼¶¨Ê±¼äµÄÁ¬½Ó¡£Èç¹ûÖ¸¶¨if_close_connection£¬Ôò×Ô¶¯¹Ø±Õ³¬Ê±µÄÁ¬½Ó¡£Î´Ö¸¶¨½ö·µ»ØÁ¬½ÓµÄfdÊı×é¡£
+         * æ£€æµ‹æœåŠ¡å™¨æ‰€æœ‰è¿æ¥ï¼Œå¹¶æ‰¾å‡ºå·²ç»è¶…è¿‡çº¦å®šæ—¶é—´çš„è¿æ¥ã€‚å¦‚æœæŒ‡å®šif_close_connectionï¼Œåˆ™è‡ªåŠ¨å…³é—­è¶…æ—¶çš„è¿æ¥ã€‚æœªæŒ‡å®šä»…è¿”å›è¿æ¥çš„fdæ•°ç»„ã€‚
          *
-         * @param bool|true $if_close_connection ÊÇ·ñ¹Ø±Õ³¬Ê±µÄÁ¬½Ó£¬Ä¬ÈÏÎªtrue
+         * @param bool|true $if_close_connection æ˜¯å¦å…³é—­è¶…æ—¶çš„è¿æ¥ï¼Œé»˜è®¤ä¸ºtrue
          *
          * @return array|boolean
          */
